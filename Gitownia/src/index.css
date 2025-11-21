@@ -28,25 +28,23 @@
 /* Regular */
 @font-face {
   font-family: "ZT Nature";
-  src: url("/fonts/ZT-Nature/ZTNature-Regular.woff2") format("woff2");
+  src: url("/fonts/ZT-Nature/ZTNature-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
-/* Medium */
 @font-face {
   font-family: "ZT Nature";
-  src: url("/fonts/ZT-Nature/ZTNature-Medium.woff2") format("woff2");
+  src: url("/fonts/ZT-Nature/ZTNature-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
-/* Bold / Black (nagłówki) */
 @font-face {
   font-family: "ZT Nature";
-  src: url("/fonts/ZT-Nature/ZTNature-Black.woff2") format("woff2");
+  src: url("/fonts/ZT-Nature/ZTNature-Black.ttf") format("truetype");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
