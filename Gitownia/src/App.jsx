@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Routes, Route, Navigate } from "react-router-dom";
+import { HomeContent } from './Home'; // Twój komponent Home
+import Losowo from './losowo'; // Twój komponent losujący pytania
 // Zmień import na zmienioną nazwę
-import { HomeContent } from './Home';
 import { Categories1 } from './Categories1';
 import { Categories2 } from './Categories2';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     // APP-SHELL - Cała wysokość ekranu, układ Flex Col
     <div className="app-shell min-h-screen flex flex-col">
@@ -23,9 +22,14 @@ function App() {
         {/* Kontener dla routingu */}
         <div className="app-container w-full max-w-4xl">
           <Routes>
-            {/* Navigacja do Home */}
+            {/* Przekierowanie z "/" na "/home" */}
             <Route path="/" element={<Navigate to="/home" replace />} />
 
+            {/* Strona główna */}
+            <Route path="/home" element={<HomeContent />} /> 
+
+            {/* Strona z losowaniem pytań */}
+            <Route path="/losowo" element={<Losowo />} />
             {/* Ładujemy samą treść strony, bez ramki */}
             <Route path="/home" element={<HomeContent />} />
             <Route path="/categories1" element={<Categories1 />} />
@@ -35,7 +39,7 @@ function App() {
 
       </main>
 
-      {/* STOPKA - Zawsze na dole */}
+      {/* STOPKA */}
       <footer className="text-center text-xs text-text-muted py-6 border-t border-border mt-auto">
         © {new Date().getFullYear()} Gitownia — łączymy ludzi z duszą
       </footer>
