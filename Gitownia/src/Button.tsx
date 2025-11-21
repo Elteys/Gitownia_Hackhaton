@@ -1,6 +1,5 @@
 import React from "react";
 import clsx from "clsx";
-@import "tailwindcss";
 
 type ButtonVariant = "primary" | "secondary" | "ghost";
 type ButtonSize = "md" | "lg";
