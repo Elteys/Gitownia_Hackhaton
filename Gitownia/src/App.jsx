@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Routes, Route, Navigate } from "react-router-dom";
 // Zmień import na zmienioną nazwę
 import { HomeContent } from './Home'; 
+import Names from './Names';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -26,6 +27,8 @@ function App() {
             
             {/* Ładujemy samą treść strony, bez ramki */}
             <Route path="/home" element={<HomeContent />} /> 
+            <Route path="/names" element={<Names />} /> 
+
           </Routes>
         </div>
 
