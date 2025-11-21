@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate } from "react-router-dom";
 import { HomeContent } from './Home'; // Twój komponent Home
-import Losowo from './losowo'; // Twój komponent losujący pytania
+import Questions from './Questions'; // Twój komponent losujący pytania
 // Zmień import na zmienioną nazwę
 import { Categories1 } from './Categories1';
 import { Categories2 } from './Categories2';
@@ -29,7 +29,7 @@ function App() {
             <Route path="/home" element={<HomeContent />} /> 
 
             {/* Strona z losowaniem pytań */}
-            <Route path="/losowo" element={<Losowo />} />
+            <Route path="/questions" element={<Questions />} />
             {/* Ładujemy samą treść strony, bez ramki */}
             <Route path="/home" element={<HomeContent />} />
             <Route path="/categories1" element={<Categories1 />} />
