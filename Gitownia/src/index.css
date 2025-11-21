@@ -1,68 +1,121 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+@import "tailwindcss";
+
+/* =============================
+   1) Semantyczne kolory (Tailwind @theme)
+   ============================= */
+@theme {
+  /* Tło i powierzchnie */
+  --color-bg: #020617;
+  --color-surface: #020617;
+  --color-surface-muted: #020617;
+
+  /* Akcenty */
+  --color-accent: #0ea5e9;
+  --color-accent-soft: #22d3ee;
+
+  /* Obwódki / podziały */
+  --color-border: #1e293b;
+
+  /* Tekst */
+  --color-text: #e5e7eb;
+  --color-text-muted: #9ca3af;
+}
+
+/* =============================
+   2) Font ZT Nature (self‑host)
+   ============================= */
+
+/* Regular */
+@font-face {
+  font-family: "ZT Nature";
+  src: url("/fonts/ZT-Nature/ZTNature-Regular.ttf") format("truetype");
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-display: swap;
 }
 
-a {
+@font-face {
+  font-family: "ZT Nature";
+  src: url("/fonts/ZT-Nature/ZTNature-Medium.ttf") format("truetype");
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  font-style: normal;
+  font-display: swap;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+@font-face {
+  font-family: "ZT Nature";
+  src: url("/fonts/ZT-Nature/ZTNature-Black.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
+/* =============================
+   3) Globalne style bazowe
+   ============================= */
+@layer base {
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+  html,
+  body,
+  #root {
+    @apply h-full bg-bg text-text antialiased;
   }
-  a:hover {
-    color: #747bff;
+
+  body {
+    font-family: "ZT Nature", system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
   }
-  button {
-    background-color: #f9f9f9;
+
+  h1 {
+    @apply text-3xl font-extrabold tracking-tight text-text;
+  }
+
+  h2 {
+    @apply text-2xl font-bold tracking-tight text-text;
+  }
+
+  h3 {
+    @apply text-xl font-semibold text-text;
+  }
+
+  p {
+    @apply text-sm text-text;
+  }
+
+  a {
+    @apply text-accent hover:text-accent-soft transition-colors;
+  }
+}
+
+/* =============================
+   4) Uniwersalne komponenty
+   ============================= */
+@layer components {
+  .app-shell {
+    @apply min-h-screen flex flex-col items-center bg-bg text-text;
+  }
+
+  .app-container {
+    @apply w-full max-w-3xl px-4 py-6 sm:px-6 sm:py-8;
+  }
+
+  .card {
+    @apply bg-surface border border-border rounded-2xl shadow-lg shadow-black/40 p-4 sm:p-6;
+  }
+
+  .primary-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-4 py-2 text-sm font-medium text-slate-950 hover:bg-accent-soft active:bg-accent disabled:bg-slate-600 disabled:cursor-not-allowed transition-colors;
+  }
+
+  .secondary-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-surface px-4 py-2 text-sm font-medium text-text hover:bg-surface-muted transition-colors;
+  }
+
+  .pill {
+    @apply inline-flex items-center rounded-full border border-border bg-surface-muted px-3 py-1 text-xs font-medium text-text-muted;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-border bg-surface px-3 py-2 text-sm text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent;
   }
 }
