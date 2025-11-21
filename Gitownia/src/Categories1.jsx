@@ -1,6 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export function Categories1() {
+  const navigate = useNavigate();
+
+  const handleSelect = (value) => {
+    localStorage.setItem("gameCategoryLevel1", value);
+    navigate("/names");
+  };
+
   return (
     <div className="flex flex-col gap-14 w-full">
       {/* HERO */}
@@ -20,6 +28,7 @@ export function Categories1() {
       {/* PRZYCISKI KATEGORII */}
       <section className="grid gap-4 sm:gap-6 w-full max-w-3xl mx-auto grid-cols-1 sm:grid-cols-2">
         <button
+          onClick={() => handleSelect("icebreaker")}
           className="card w-full flex flex-col items-start gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors"
         >
           <span className="text-xs uppercase tracking-wide text-text-muted">
@@ -32,6 +41,7 @@ export function Categories1() {
         </button>
 
         <button
+          onClick={() => handleSelect("challenges")}
           className="card w-full flex flex-col items-start gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors"
         >
           <span className="text-xs uppercase tracking-wide text-text-muted">
@@ -44,6 +54,7 @@ export function Categories1() {
         </button>
 
         <button
+          onClick={() => handleSelect("random")}
           className="card w-full flex flex-col items-start gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors"
         >
           <span className="text-xs uppercase tracking-wide text-text-muted">
@@ -56,6 +67,7 @@ export function Categories1() {
         </button>
 
         <button
+          onClick={() => handleSelect("truth-false")}
           className="card w-full flex flex-col items-start gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors"
         >
           <span className="text-xs uppercase tracking-wide text-text-muted">
@@ -68,6 +80,7 @@ export function Categories1() {
         </button>
 
         <button
+          onClick={() => handleSelect("18-plus")}
           className="card w-full flex flex-col items-start gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors sm:col-span-2"
         >
           <span className="text-xs uppercase tracking-wide text-text-muted">
