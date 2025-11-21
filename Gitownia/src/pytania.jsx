@@ -1,71 +1,79 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import questionsData from "../Json/questions.json";
 
-const KafelkiStrona = ({ initialCategories = [] }) => {
-  const [selectedCategories, setSelectedCategories] = useState(initialCategories);
+export default function Pytania({ categories = ["icebreaker", "wyzwania1"], users = ["Ania", "Bartek", "Kasia"] }) {
   const [currentQuestion, setCurrentQuestion] = useState(null);
+  const [round, setRound] = useState(1);
+  const [remainingUsers, setRemainingUsers] = useState([...users]);
+  const [currentUser, setCurrentUser] = useState(null);
 
-  // Pobierz wszystkie dostępne kategorie poza tymi domyślnymi dla strony
-  const allCategories = Object.keys(questionsData).filter(
-    (cat) => !initialCategories.includes(cat)
-  );
-
-  const toggleCategory = (category) => {
-    setSelectedCategories((prev) =>
-      prev.includes(category)
-        ? prev.filter((c) => c !== category)
-        : [...prev, category]
-    );
-  };
+  useEffect(() => {
+    if (remainingUsers.length === 0 && users.length > 0) {
+      setRemainingUsers([...users]);
+      setRound(prev => prev + 1);
+    }
+  }, [remainingUsers, users]);
 
   const getRandomQuestion = () => {
-    const allQuestions = selectedCategories.flatMap((cat) => questionsData[cat] || []);
-
+    const allQuestions = categories.flatMap(cat => questionsData[cat] || []);
     if (allQuestions.length === 0) {
-      setCurrentQuestion({ id: 0, text: "Nie wybrano żadnych kategorii lub brak pytań." });
+      setCurrentQuestion({ id: 0, text: "Brak pytań w wybranych kategoriach." });
       return;
     }
+    if (remainingUsers.length === 0) return;
 
-    const randomIndex = Math.floor(Math.random() * allQuestions.length);
-    setCurrentQuestion(allQuestions[randomIndex]);
+    const userIndex = Math.floor(Math.random() * remainingUsers.length);
+    const user = remainingUsers[userIndex];
+    setRemainingUsers(prev => prev.filter((_, i) => i !== userIndex));
+    setCurrentUser(user);
+
+    const questionIndex = Math.floor(Math.random() * allQuestions.length);
+    setCurrentQuestion(allQuestions[questionIndex]);
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center p-4">
-      <h1 className="text-2xl font-bold mb-4">Wybierz dodatkowe kategorie</h1>
+    <div className="flex flex-col items-center w-full min-h-screen p-4 sm:p-6">
 
-      <div className="grid grid-cols-2 gap-4 mb-6 w-full max-w-md">
-        {allCategories.map((cat) => (
-          <div
-            key={cat}
-            className={`p-4 rounded shadow text-center cursor-pointer transition
-              ${selectedCategories.includes(cat)
-                ? "bg-blue-500 text-white"
-                : "bg-white text-gray-800 hover:bg-gray-200"
-              }`}
-            onClick={() => toggleCategory(cat)}
-          >
-            {cat}
+      {/* Kontener contentu o stałej szerokości */}
+      <div className="flex flex-col gap-10 w-[360px] sm:w-[400px] md:w-[450px]">
+
+        {/* Nagłówek */}
+        <section className="text-center flex flex-col items-center gap-3">
+          <h1 className="text-3xl sm:text-4xl font-bold leading-tight">
+            Losowanie pytań
+          </h1>
+          <p className="text-base sm:text-lg text-text-muted text-center">
+            Runda: <span className="text-accent text-lg sm:text-xl md:text-2xl">{round}</span>
+            {currentUser && ` — Aktualny gracz: ${currentUser}`}
+          </p>
+        </section>
+
+        {/* Pytanie */}
+        <section className="card flex flex-col gap-4 text-center">
+          <div className="min-h-[160px] flex items-center justify-center p-3 sm:p-4">
+            {currentQuestion ? (
+              <p className="text-base sm:text-lg md:text-xl text-text">{currentQuestion.text}</p>
+            ) : (
+              <p className="text-sm sm:text-base text-text-muted">Kliknij przycisk, aby wylosować pytanie</p>
+            )}
           </div>
-        ))}
-      </div>
 
-      <div className="bg-white p-6 rounded shadow w-full max-w-md text-center">
-        {currentQuestion ? (
-          <p className="text-lg mb-6">{currentQuestion.text}</p>
-        ) : (
-          <p className="text-gray-500 mb-6">Kliknij przycisk, aby wylosować pytanie</p>
-        )}
+          <button
+            className="primary-btn mt-3 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg"
+            onClick={getRandomQuestion}
+            disabled={users.length === 0}
+          >
+            Losuj pytanie
+          </button>
 
-        <button
-          className="px-6 py-3 bg-blue-500 text-white rounded hover:bg-blue-600"
-          onClick={getRandomQuestion}
-        >
-          Losuj pytanie
-        </button>
+          {users.length === 0 && (
+            <p className="text-red-500 mt-2 text-sm sm:text-base text-center">
+              Brak użytkowników! Dodaj graczy na odpowiedniej podstronie.
+            </p>
+          )}
+        </section>
+
       </div>
     </div>
   );
-};
-
-export default KafelkiStrona;
+}

@@ -1,18 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Routes, Route, Navigate } from "react-router-dom";
-// Zmień import na zmienioną nazwę
-import { HomeContent } from './Home'; 
+import { HomeContent } from './Home'; // Twój komponent Home
+import Losowo from './losowo'; // Twój komponent losujący pytania
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     // APP-SHELL - Cała wysokość ekranu, układ Flex Col
     <div className="app-shell min-h-screen flex flex-col">
       
-      {/* NAGŁÓWEK (jeśli jest potrzebny, można go dodać tutaj) */}
+      {/* NAGŁÓWEK */}
       <header className="p-4 sm:p-6 border-b border-border">
-         <div className="app-container">LOGO</div>
+         <div className="app-container font-bold text-xl">LOGO</div>
       </header>
 
       {/* GŁÓWNA TREŚĆ (ROUTE) */}
@@ -21,17 +19,20 @@ function App() {
         {/* Kontener dla routingu */}
         <div className="app-container w-full max-w-4xl">
           <Routes>
-            {/* Navigacja do Home */}
+            {/* Przekierowanie z "/" na "/home" */}
             <Route path="/" element={<Navigate to="/home" replace />} />
-            
-            {/* Ładujemy samą treść strony, bez ramki */}
+
+            {/* Strona główna */}
             <Route path="/home" element={<HomeContent />} /> 
+
+            {/* Strona z losowaniem pytań */}
+            <Route path="/losowo" element={<Losowo />} />
           </Routes>
         </div>
 
       </main>
 
-      {/* STOPKA - Zawsze na dole */}
+      {/* STOPKA */}
       <footer className="text-center text-xs text-text-muted py-6 border-t border-border mt-auto">
         © {new Date().getFullYear()} Gitownia — łączymy ludzi z duszą
       </footer>

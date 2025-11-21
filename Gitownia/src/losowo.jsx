@@ -1,10 +1,12 @@
 import React from "react";
-import Strona from "./pytania.jsx";
+import Pytania from "./pytania";
 
-function App() {
-  return (
-    <Strona categories={["icebreaker", "wyzwania1"]} />
-  );
-}
+const Losowo = () => {
+  // Domyślne kategorie i użytkownicy do losowania
+  const categories = ["icebreaker", "wyzwania1"];
+  const users = ["Ania", "Bartek", "Kasia"];
 
-export default App;
+  return <Pytania categories={categories} users={users} />;
+};
+
+export default Losowo;
