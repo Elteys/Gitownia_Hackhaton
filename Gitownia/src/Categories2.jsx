@@ -5,8 +5,12 @@ export function Categories2() {
     const navigate = useNavigate();
 
     const handleSelect = (value) => {
-        localStorage.setItem("gameCategoryLevel2", value);
-        navigate("/names");
+        if (value === "community") {
+            navigate("/community");
+        } else {
+            localStorage.setItem("gameCategoryLevel1", value);
+            navigate("/names");
+        }
     };
 
     return (
@@ -89,6 +93,18 @@ export function Categories2() {
                     <span className="text-lg sm:text-xl font-semibold">18+</span>
                     <span className="text-xs sm:text-sm text-text-muted">
                         Śmielsze pytania i wyzwania – do grania w zaufanym gronie.
+                    </span>
+                </button>
+                <button
+                    onClick={() => handleSelect("community")}
+                    className="card w-full flex flex-col items-start gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors sm:col-span-2"
+                >
+                    <span className="text-xs uppercase tracking-wide text-text-muted">
+                        Potrzebujesz więcej?
+                    </span>
+                    <span className="text-lg sm:text-xl font-semibold">Społeczność</span>
+                    <span className="text-xs sm:text-sm text-text-muted">
+                        Wybierz zestaw społecznościowy albo stwórz własny zestaw.
                     </span>
                 </button>
             </section>

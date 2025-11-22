@@ -7,6 +7,9 @@ import Questions from './Questions';
 import Names from './Names';
 import { Categories1 } from './Categories1';
 import { Categories2 } from './Categories2';
+import Community from './Community.jsx';
+import CommunityCreate from './community-create';
+import CommunitySelect from './community-select';
 
 function App() {
   return (
@@ -41,6 +44,9 @@ function App() {
             <Route path="/questions" element={<Questions />} />
             <Route path="/categories1" element={<Categories1 />} />
             <Route path="/categories2" element={<Categories2 />} />
+            <Route path="/community" element={<Community />} />
+            <Route path="/community-create" element={<CommunityCreate />} />
+            <Route path="/community-select" element={<CommunitySelect />} />
           </Routes>
         </div>
       </main>
