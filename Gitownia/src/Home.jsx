@@ -40,7 +40,7 @@ export function HomeContent() {
       {/* SLOGAN */}
       <section className="text-center flex flex-col items-center gap-4 sm:gap-6">
         <h1 className="mb-4 text-4xl font-bold tracking-tight text-heading md:text-5xl lg:text-6xl animate-fade-in-up">
-          Przełamcie pierwsze lody
+          Przełamcie pierwsze bariery
           <br />
           <span className="text-accent">{slogans[sloganIndex]}</span>
         </h1>
