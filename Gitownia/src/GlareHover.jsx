@@ -1,10 +1,11 @@
 import { useRef } from 'react';
 
 const GlareHover = ({
-  maxWidth = '350px',
-  maxHeight = '350px',
+  maxWidth = '100%',
+  maxHeight = '100%',
+
   height = '100%',
-  background = '#000',
+  background = '#020617',
   borderRadius = '30px',
   borderColor = '#333',
   children,
