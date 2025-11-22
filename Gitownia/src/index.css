@@ -15,6 +15,7 @@
 
   /* Obwódki / podziały */
   --color-border: #1e293b;
+  --color-blue: #0096FF;
 
   /* Tekst */
   --color-text: #e5e7eb;
@@ -117,5 +118,24 @@
 
   .input {
     @apply w-full rounded-xl border border-border bg-surface px-3 py-2 text-sm text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent;
+  }
+}
+
+@layer utilities {
+  .fade-slide {
+    @apply transition-opacity duration-500;
+    animation: fadeSlide 0.5s ease-out;
+  }
+
+  @keyframes fadeSlide {
+    0% {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
