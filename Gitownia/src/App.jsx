@@ -30,7 +30,7 @@ function App() {
       </div>
 
       {/* GŁÓWNA TREŚĆ */}
-      <main className="flex-grow flex items-center justify-center p-12 sm:p-10 relative z-10">
+      <main className="flex-grow flex items-center justify-center p-0 sm:p-12 relative z-10">
         <div className="app-container w-full max-w-4xl">
           <Routes>
             <Route path="/" element={<Navigate to="/home" replace />} />
