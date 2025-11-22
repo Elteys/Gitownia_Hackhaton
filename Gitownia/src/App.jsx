@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { HomeContent } from './Home'; // Twój komponent Home
 import Questions from './Questions'; // Twój komponent losujący pytania
 // Zmień import na zmienioną nazwę
+import Names from './Names';
 import { Categories1 } from './Categories1';
 import { Categories2 } from './Categories2';
 
@@ -27,6 +28,8 @@ function App() {
 
             {/* Strona główna */}
             <Route path="/home" element={<HomeContent />} /> 
+            <Route path="/names" element={<Names />} /> 
+
 
             {/* Strona z losowaniem pytań */}
             <Route path="/questions" element={<Questions />} />
