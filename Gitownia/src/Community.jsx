@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import BackButton from './BackButton';
+import GlareHover from "./GlareHover";
 
 function Community() {
   const navigate = useNavigate();
@@ -34,9 +35,7 @@ function Community() {
           onClick={handleSelectCommunity}
           className="card w-full flex flex-col items-start gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors text-left"
         >
-          <span className="text-xs uppercase tracking-wide text-text-muted">
-            Zespół społecznościowy
-          </span>
+          
           <span className="text-lg sm:text-xl font-semibold">Wybierz zestaw</span>
           <span className="text-xs sm:text-sm text-text-muted">
             Zobacz, co zasugerowała społeczność i wybierz zestaw do gry.
@@ -46,9 +45,7 @@ function Community() {
           onClick={handleCreateCustom}
           className="card w-full flex flex-col items-start gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors text-left"
         >
-          <span className="text-xs uppercase tracking-wide text-text-muted">
-            Twórczość
-          </span>
+        
           <span className="text-lg sm:text-xl font-semibold">Stwórz własny zestaw</span>
           <span className="text-xs sm:text-sm text-text-muted">
             Stwórz własny zestaw kart i podziel się z innymi.
