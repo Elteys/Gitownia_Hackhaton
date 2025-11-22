@@ -16,7 +16,7 @@ export default function Names() {
   // funkcja do zapisu i przekierowania
   const handleNext = () => {
     localStorage.setItem("names", JSON.stringify(names)); // zapis do localStorage
-    window.location.hash = "#/losowo"; // przekierowanie
+    window.location.hash = "#/questions"; // przekierowanie
   };
 
   return (
