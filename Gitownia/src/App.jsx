@@ -124,7 +124,7 @@ function App() {
 
       {/* STOPKA (Z-index z10, aby była nad cząsteczkami, ale niekoniecznie z z-index cząsteczek) */}
       <footer className="text-center text-xs text-text-muted py-6 border-t border-border mt-auto relative z-10">
-        © {new Date().getFullYear()} Gitownia — łączymy ludzi z duszą
+        © {new Date().getFullYear()} BreakIT - Gitownia
       </footer>
     </div>
   );
