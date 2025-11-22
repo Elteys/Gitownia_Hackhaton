@@ -36,11 +36,9 @@ export function Categories1() {
       <section className="grid gap-4 sm:gap-6 w-full max-w-3xl mx-auto grid-cols-1 sm:grid-cols-2">
         <button
           onClick={() => handleSelect("icebreaker")}
-          className="card w-full flex flex-col items-start gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors"
+          className="card w-full flex flex-col items-center text-center gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors"
         >
-          <span className="text-xs uppercase tracking-wide text-text-muted">
-            Na rozgrzewkę
-          </span>
+          
           <span className="text-lg sm:text-xl font-semibold">Icebreaker</span>
           <span className="text-xs sm:text-sm text-text-muted">
             Bezpieczne pytania na start, idealne dla nowych grup.
@@ -49,11 +47,9 @@ export function Categories1() {
 
         <button
           onClick={() => handleSelect("wyzwania1")}
-          className="card w-full flex flex-col items-start gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors"
+          className="card w-full flex flex-col items-center text-center gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors"
         >
-          <span className="text-xs uppercase tracking-wide text-text-muted">
-            Więcej emocji
-          </span>
+        
           <span className="text-lg sm:text-xl font-semibold">Wyzwania</span>
           <span className="text-xs sm:text-sm text-text-muted">
             Ruch, akcja i zadania do wykonania przed grupą.
@@ -62,11 +58,9 @@ export function Categories1() {
 
         <button
           onClick={() => handleSelect("random")}
-          className="card w-full flex flex-col items-start gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors"
+          className="card w-full flex flex-col items-center text-center gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors"
         >
-          <span className="text-xs uppercase tracking-wide text-text-muted">
-            Tylko dla pełnoletnich
-          </span>
+         
           <span className="text-lg sm:text-xl font-semibold">18+</span>
           <span className="text-xs sm:text-sm text-text-muted">
             Śmielsze pytania i wyzwania – do grania w zaufanym gronie.
@@ -75,11 +69,9 @@ export function Categories1() {
 
         <button
           onClick={() => handleSelect("prawda_falsz")}
-          className="card w-full flex flex-col items-start gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors"
+          className="card w-full flex flex-col items-center text-center gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors"
         >
-          <span className="text-xs uppercase tracking-wide text-text-muted">
-            Szybkie rundy
-          </span>
+         
           <span className="text-lg sm:text-xl font-semibold">Prawda / Fałsz</span>
           <span className="text-xs sm:text-sm text-text-muted">
             Krótkie stwierdzenia, które odsłaniają zaskakujące rzeczy.
@@ -88,11 +80,9 @@ export function Categories1() {
 
         <button
           onClick={() => handleSelect("random")}
-          className="card w-full flex flex-col items-start gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors sm:col-span-2"
+          className="card w-full flex flex-col items-center text-center gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors sm:col-span-2"
         >
-          <span className="text-xs uppercase tracking-wide text-text-muted">
-            Dla niezdecydowanych
-          </span>
+         
           <span className="text-lg sm:text-xl font-semibold">Wszystkie</span>
           <span className="text-xs sm:text-sm text-text-muted">
             Miks pytań i wyzwań – aplikacja wybiera za Was.
@@ -102,11 +92,9 @@ export function Categories1() {
 
         <button
           onClick={() => handleSelect("community")}
-          className="card w-full flex flex-col items-start gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors sm:col-span-2"
+          className="card w-full flex flex-col items-center text-center gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors sm:col-span-2"
         >
-          <span className="text-xs uppercase tracking-wide text-text-muted">
-            Potrzebujesz więcej?
-          </span>
+        
           <span className="text-lg sm:text-xl font-semibold">Społeczność</span>
           <span className="text-xs sm:text-sm text-text-muted">
             Wybierz zestaw społecznościowy albo stwórz własny zestaw.
