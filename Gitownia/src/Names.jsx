@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import BackButton from "./BackButton";
 
 export default function Names() {
   const [names, setNames] = useState([""]);
@@ -34,7 +35,9 @@ export default function Names() {
   const hasAnyName = names.some((n) => n.trim().length > 0);
 
   return (
+    
     <div className="flex flex-col gap-10 w-full">
+      <BackButton />
       {/* HERO */}
       <section className="text-center flex flex-col items-center gap-3 sm:gap-4">
         <h1 className="text-3xl sm:text-5xl leading-tight">

@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import BackButton from "./BackButton";
 
 export function Categories2() {
     const navigate = useNavigate();
@@ -16,6 +17,7 @@ export function Categories2() {
 
     return (
         <div className="flex flex-col gap-14 w-full">
+            <BackButton />
             {/* HERO */}
             <section className="text-center flex flex-col items-center gap-4 sm:gap-6">
                 <h1 className="text-3xl sm:text-7xl leading-tight">
