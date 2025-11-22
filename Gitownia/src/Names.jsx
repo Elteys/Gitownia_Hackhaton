@@ -47,7 +47,7 @@ export default function Names() {
           Wpisz imiona
           <br />
           <span className="text-accent">
-            z kim dziś przełamujesz lody?
+            z kim dziś przełamujesz bariery?
           </span>
         </h1>
         <p className="text-text-muted max-w-xl text-sm sm:text-base">
