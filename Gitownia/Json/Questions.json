@@ -55,26 +55,7 @@
     ],
 
    "wyzwania1": [
-  { "id": 1, "text": "Zrób swój najlepszy dziwny dźwięk." },
-  { "id": 2, "text": "Zrób losowy taneczny ruch przez 3 sekundy." },
-  { "id": 3, "text": "Przeczytaj pierwsze słowo, które widzisz wokół siebie (na przedmiotach)." },
-  { "id": 4, "text": "Otwórz losową aplikację i przeczytaj pierwsze słowo, które zobaczysz." },
-  { "id": 5, "text": "Wylosuj jedną osobę i zrób z nią synchroniczne przybicie piątki." },
-  { "id": 6, "text": "Zrób minę, jakbyś wygrał milion złotych." },
-  { "id": 7, "text": "Zrób minę, jakbyś zobaczył coś bardzo podejrzanego." },
-  { "id": 8, "text": "Zatańcz w rytm wyimaginowanej muzyki przez 3 sekundy." },
-  { "id": 9, "text": "Zrób najgłośniejsze 'WOW' jakie potrafisz." },
-  { "id": 10, "text": "Zakryj oczy i dotknij losowego przedmiotu obok ciebie." },
-  { "id": 11, "text": "Utwórz rytm stukając palcami o stół lub telefon." },
-  { "id": 12, "text": "Stań na jednej nodze przez 5 sekund." },
-  { "id": 13, "text": "Zrób obrót wokół własnej osi." },
-  { "id": 14, "text": "Zasymuluj dźwięk powiadomienia telefonu." },
-  { "id": 15, "text": "Przez 5 sekund mów tak, jakbyś komentował mecz." },
-  { "id": 16, "text": "Zrób 'freeze pose' na 3 sekundy." },
-  { "id": 17, "text": "Narysuj w powietrzu swoją ulubioną literę." },
-  { "id": 18, "text": "Ułóż z dłoni kształt serca." },
-  { "id": 19, "text": "Zrób szybki 'patrz tu–tam' jakbyś kogoś szukał." },
-  { "id": 20, "text": "Spróbuj gwizdnąć — nawet jeśli nie umiesz." }
+  { "id": 1, "text": "Napisz na tablicy największą prawdę roku 2025" }
   ],
   "wyzwania2": [
   { "id": 1, "text": "Zatańcz 5-sekundowy układ wymyślony na miejscu." },
