@@ -41,7 +41,7 @@ export function HomeContent() {
     <div className="flex flex-col gap-14 w-full">
       {/* SLOGAN */}
       <section className="text-center flex flex-col items-center gap-4 sm:gap-6">
-        <h1 className="mb-4 text-4xl font-bold tracking-tight text-heading md:text-5xl lg:text-6xl animate-fade-in-up">
+        <h1 className="mb-4 text-3xl font-bold tracking-tight text-heading md:text-5xl lg:text-6xl animate-fade-in-up">
           Przełamcie pierwsze bariery
           <br />
           <div className="relative h-[60px] flex justify-center items-center overflow-hidden">
