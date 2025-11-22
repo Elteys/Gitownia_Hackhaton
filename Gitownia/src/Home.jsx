@@ -126,7 +126,7 @@ export function HomeContent() {
                 <h3 className="text-accent text-xl sm:text-2xl">
                   Poznajcie się LEPIEJ.
                 </h3>
-                <p className="text-text-muted text-base sm:text-lg text-center">
+                <p className="text-text-muted text-sm sm:text-base text-center">
                   Moderowane profile i pełna kontrola nad prywatnością.
                 </p>
               </div>
