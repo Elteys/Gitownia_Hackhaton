@@ -1,38 +1,45 @@
 import React, { useState } from 'react';
 import { Routes, Route, Navigate } from "react-router-dom";
-// Zmień import na zmienioną nazwę
-import { HomeContent } from './Home'; 
+import { HomeContent } from './Home';
+import logo from "./assets/icecube.png";
+import Particles from './Particles';
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    // APP-SHELL - Cała wysokość ekranu, układ Flex Col
-    <div className="app-shell min-h-screen flex flex-col">
-      
-      {/* NAGŁÓWEK (jeśli jest potrzebny, można go dodać tutaj) */}
-      <header className="p-4 sm:p-6 border-b border-border">
-         <div className="app-container">LOGO</div>
-      </header>
+    <div className="app-shell min-h-screen flex flex-col relative overflow-hidden">
+      {/* Particles jako tło całej strony */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: 0,
+          pointerEvents: 'none',
+        }}
+      >
+        <Particles
+          amplitude={1}
+          distance={0}
+          enableMouseInteraction={true}
+        />
+      </div>
 
-      {/* GŁÓWNA TREŚĆ (ROUTE) */}
-      <main className="flex-grow flex items-center justify-center p-4 sm:p-6">
-        
-        {/* Kontener dla routingu */}
+      {/* Główna treść */}
+      <main className="flex-grow flex items-center justify-center p-2 sm:p-4 relative z-10">
         <div className="app-container w-full max-w-4xl">
           <Routes>
-            {/* Navigacja do Home */}
             <Route path="/" element={<Navigate to="/home" replace />} />
-            
-            {/* Ładujemy samą treść strony, bez ramki */}
-            <Route path="/home" element={<HomeContent />} /> 
+            <Route path="/home" element={<HomeContent />} />
           </Routes>
         </div>
-
       </main>
 
-      {/* STOPKA - Zawsze na dole */}
-      <footer className="text-center text-xs text-text-muted py-6 border-t border-border mt-auto">
+      {/* Stopka */}
+      <footer className="text-center text-xs text-text-muted py-6 border-t border-border mt-auto relative z-10">
         © {new Date().getFullYear()} Gitownia — łączymy ludzi z duszą
       </footer>
     </div>
