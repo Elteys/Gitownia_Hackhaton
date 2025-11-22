@@ -56,60 +56,96 @@ export function Categories1() {
       <section className="grid gap-4 sm:gap-6 w-full max-w-3xl mx-auto grid-cols-1 sm:grid-cols-2">
 
         {/* Icebreaker */}
-        <GlareHover {...sharedProps} onClick={() => handleSelect("icebreaker")}>
-          <span className="text-lg sm:text-xl font-semibold">Icebreaker</span>
-          <span className="text-xs sm:text-sm text-text-muted">
-            Bezpieczne pytania na start, idealne dla nowych grup.
-          </span>
-        </GlareHover>
-
+        <div
+          onClick={() => handleSelect("icebreaker")}
+          role="button"
+          tabIndex={0}
+          onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && handleSelect("icebreaker")}
+        >
+          <GlareHover {...sharedProps} onClick={() => handleSelect("icebreaker")}>
+            <span className="text-lg sm:text-xl font-semibold">Icebreaker</span>
+            <span className="text-xs sm:text-sm text-text-muted">
+              Bezpieczne pytania na start, idealne dla nowych grup.
+            </span>
+          </GlareHover>
+        </div>
         {/* Wyzwania */}
-        <GlareHover {...sharedProps} onClick={() => handleSelect("wyzwania1")}>
-          <span className="text-lg sm:text-xl font-semibold">Wyzwania</span>
-          <span className="text-xs sm:text-sm text-text-muted">
-            Ruch, akcja i zadania do wykonania przed grupą.
-          </span>
-        </GlareHover>
-
+        <div
+          onClick={() => handleSelect("wyzwania1")}
+          role="button"
+          tabIndex={0}
+          onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && handleSelect("wyzwania1")}
+        >
+          <GlareHover {...sharedProps} onClick={() => handleSelect("wyzwania1")}>
+            <span className="text-lg sm:text-xl font-semibold">Wyzwania</span>
+            <span className="text-xs sm:text-sm text-text-muted">
+              Ruch, akcja i zadania do wykonania przed grupą.
+            </span>
+          </GlareHover>
+        </div>
         {/* 18+ */}
-        <GlareHover {...sharedProps} onClick={() => handleSelect("18plus")}>
-          <span className="text-lg sm:text-xl font-semibold">18+</span>
-          <span className="text-xs sm:text-sm text-text-muted">
-            Śmielsze pytania i wyzwania – do grania w zaufanym gronie.
-          </span>
-        </GlareHover>
-
+        <div
+          onClick={() => handleSelect("18plus")}
+          role="button"
+          tabIndex={0}
+          onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && handleSelect("18plus")}
+        >
+          <GlareHover {...sharedProps} onClick={() => handleSelect("18plus")}>
+            <span className="text-lg sm:text-xl font-semibold">18+</span>
+            <span className="text-xs sm:text-sm text-text-muted">
+              Śmielsze pytania i wyzwania – do grania w zaufanym gronie.
+            </span>
+          </GlareHover>
+        </div>
         {/* Prawda / Fałsz */}
-        <GlareHover {...sharedProps} onClick={() => handleSelect("prawda_falsz")}>
-          <span className="text-lg sm:text-xl font-semibold">Prawda / Fałsz</span>
+        <div
+          onClick={() => handleSelect("prawda_falsz")}
+          role="button"
+          tabIndex={0}
+          onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && handleSelect("prawda_falsz")}
+        >
+          <GlareHover {...sharedProps} onClick={() => handleSelect("prawda_falsz")}>
+            <span className="text-lg sm:text-xl font-semibold">Prawda / Fałsz</span>
+            <span className="text-xs sm:text-sm text-text-muted">
+              Krótkie stwierdzenia, które odsłaniają zaskakujące rzeczy.
+            </span>
+          </GlareHover>
+        </div>
+        <div
+          onClick={() => handleSelect("random")}
+          role="button"
+          tabIndex={0}
+          onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && handleSelect("random")}
+        >
+        <GlareHover
+          {...sharedProps}
+          onClick={() => handleSelect("random")}
+          className={sharedProps.className + " sm:col-span-2"}
+        >
+          <span className="text-lg sm:text-xl font-semibold">Wszystkie</span>
           <span className="text-xs sm:text-sm text-text-muted">
-            Krótkie stwierdzenia, które odsłaniają zaskakujące rzeczy.
+            Miks pytań i wyzwań – aplikacja wybiera za Was.
           </span>
         </GlareHover>
-
+</div>
+        {/* Społeczność – szeroki */}
+        <div
+          onClick={() => handleSelect("community")}
+          role="button"
+          tabIndex={0}
+          onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && handleSelect("community")}
+        >
         <GlareHover
-  {...sharedProps}
-  onClick={() => handleSelect("random")}
-  className={sharedProps.className + " sm:col-span-2"}
->
-  <span className="text-lg sm:text-xl font-semibold">Wszystkie</span>
-  <span className="text-xs sm:text-sm text-text-muted">
-    Miks pytań i wyzwań – aplikacja wybiera za Was.
-  </span>
-</GlareHover>
-
-{/* Społeczność – szeroki */}
-<GlareHover
-  {...sharedProps}
-  onClick={() => handleSelect("community")}
-  className={sharedProps.className + " sm:col-span-2"}
->
-  <span className="text-lg sm:text-xl font-semibold">Społeczność</span>
-  <span className="text-xs sm:text-sm text-text-muted">
-    Wybierz zestaw społecznościowy albo stwórz własny zestaw.
-  </span>
-</GlareHover>
-
+          {...sharedProps}
+          onClick={() => handleSelect("community")}
+          className={sharedProps.className + " sm:col-span-2"}
+        >
+          <span className="text-lg sm:text-xl font-semibold">Społeczność</span>
+          <span className="text-xs sm:text-sm text-text-muted">
+            Wybierz zestaw społecznościowy albo stwórz własny zestaw.
+          </span>
+        </GlareHover>
+</div>
       </section>
     </div>
   );
