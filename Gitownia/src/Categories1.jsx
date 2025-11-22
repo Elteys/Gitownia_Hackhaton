@@ -63,10 +63,12 @@ export function Categories1() {
           onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && handleSelect("icebreaker")}
         >
           <GlareHover {...sharedProps} onClick={() => handleSelect("icebreaker")}>
-            <span className="text-lg sm:text-xl font-semibold">Icebreaker</span>
-            <span className="text-xs sm:text-sm text-text-muted">
-              Bezpieczne pytania na start, idealne dla nowych grup.
-            </span>
+            <div className="flex flex-col gap-1">  {/* <-- tutaj ustawiamy kolumnę */}
+              <span className="text-lg sm:text-xl font-semibold">Icebreaker</span>
+              <span className="text-xs sm:text-sm text-text-muted">
+                Bezpieczne pytania na start, idealne dla nowych grup.
+              </span>
+            </div>
           </GlareHover>
         </div>
         {/* Wyzwania */}
@@ -77,10 +79,12 @@ export function Categories1() {
           onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && handleSelect("wyzwania1")}
         >
           <GlareHover {...sharedProps} onClick={() => handleSelect("wyzwania1")}>
-            <span className="text-lg sm:text-xl font-semibold">Wyzwania</span>
-            <span className="text-xs sm:text-sm text-text-muted">
-              Ruch, akcja i zadania do wykonania przed grupą.
-            </span>
+            <div className="flex flex-col gap-1">
+              <span className="text-lg sm:text-xl font-semibold">Wyzwania</span>
+              <span className="text-xs sm:text-sm text-text-muted">
+                Ruch, akcja i zadania do wykonania przed grupą.
+              </span>
+            </div>
           </GlareHover>
         </div>
         {/* 18+ */}
@@ -91,10 +95,12 @@ export function Categories1() {
           onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && handleSelect("18plus")}
         >
           <GlareHover {...sharedProps} onClick={() => handleSelect("18plus")}>
-            <span className="text-lg sm:text-xl font-semibold">18+</span>
-            <span className="text-xs sm:text-sm text-text-muted">
-              Śmielsze pytania i wyzwania – do grania w zaufanym gronie.
-            </span>
+            <div className="flex flex-col gap-1">
+              <span className="text-lg sm:text-xl font-semibold">18+</span>
+              <span className="text-xs sm:text-sm text-text-muted">
+                Śmielsze pytania i wyzwania – do grania w zaufanym gronie.
+              </span>
+            </div>
           </GlareHover>
         </div>
         {/* Prawda / Fałsz */}
@@ -105,10 +111,12 @@ export function Categories1() {
           onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && handleSelect("prawda_falsz")}
         >
           <GlareHover {...sharedProps} onClick={() => handleSelect("prawda_falsz")}>
-            <span className="text-lg sm:text-xl font-semibold">Prawda / Fałsz</span>
-            <span className="text-xs sm:text-sm text-text-muted">
-              Krótkie stwierdzenia, które odsłaniają zaskakujące rzeczy.
-            </span>
+            <div className="flex flex-col gap-1">
+              <span className="text-lg sm:text-xl font-semibold">Prawda / Fałsz</span>
+              <span className="text-xs sm:text-sm text-text-muted">
+                Krótkie stwierdzenia, które odsłaniają zaskakujące rzeczy.
+              </span>
+            </div>
           </GlareHover>
         </div>
         <div
@@ -117,17 +125,19 @@ export function Categories1() {
           tabIndex={0}
           onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && handleSelect("random")}
         >
-        <GlareHover
-          {...sharedProps}
-          onClick={() => handleSelect("random")}
-          className={sharedProps.className + " sm:col-span-2"}
-        >
-          <span className="text-lg sm:text-xl font-semibold">Wszystkie</span>
-          <span className="text-xs sm:text-sm text-text-muted">
-            Miks pytań i wyzwań – aplikacja wybiera za Was.
-          </span>
-        </GlareHover>
-</div>
+          <GlareHover
+            {...sharedProps}
+            onClick={() => handleSelect("random")}
+            className={sharedProps.className + " sm:col-span-2"}
+          >
+            <div className="flex flex-col gap-1">
+              <span className="text-lg sm:text-xl font-semibold">Wszystkie</span>
+              <span className="text-xs sm:text-sm text-text-muted">
+                Miks pytań i wyzwań – aplikacja wybiera za Was.
+              </span>
+            </div>
+          </GlareHover>
+        </div>
         {/* Społeczność – szeroki */}
         <div
           onClick={() => handleSelect("community")}
@@ -135,17 +145,19 @@ export function Categories1() {
           tabIndex={0}
           onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && handleSelect("community")}
         >
-        <GlareHover
-          {...sharedProps}
-          onClick={() => handleSelect("community")}
-          className={sharedProps.className + " sm:col-span-2"}
-        >
-          <span className="text-lg sm:text-xl font-semibold">Społeczność</span>
-          <span className="text-xs sm:text-sm text-text-muted">
-            Wybierz zestaw społecznościowy albo stwórz własny zestaw.
-          </span>
-        </GlareHover>
-</div>
+          <GlareHover
+            {...sharedProps}
+            onClick={() => handleSelect("community")}
+            className={sharedProps.className + " sm:col-span-2"}
+          >
+            <div className="flex flex-col gap-1">
+              <span className="text-lg sm:text-xl font-semibold">Społeczność</span>
+              <span className="text-xs sm:text-sm text-text-muted">
+                Wybierz zestaw społecznościowy albo stwórz własny zestaw.
+              </span>
+            </div>
+          </GlareHover>
+        </div>
       </section>
     </div>
   );

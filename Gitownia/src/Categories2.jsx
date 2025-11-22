@@ -67,10 +67,12 @@ export function Categories2() {
                         onClick={() => handleSelect("deep")}
                         className={cardClasses}
                     >
-                        <span className="text-lg sm:text-xl font-semibold">Głębokie</span>
-                        <span className="text-xs sm:text-sm text-text-muted">
-                            Na pewno znacie się dobrze, ale możecie jeszcze lepiej.
-                        </span>
+                        <div className="flex flex-col gap-1">
+                            <span className="text-lg sm:text-xl font-semibold">Głębokie</span>
+                            <span className="text-xs sm:text-sm text-text-muted">
+                                Na pewno znacie się dobrze, ale możecie jeszcze lepiej.
+                            </span>
+                        </div>
                     </GlareHover>
                 </div>
 
@@ -86,10 +88,12 @@ export function Categories2() {
                         onClick={() => handleSelect("wyzwania2")}
                         className={cardClasses}
                     >
-                        <span className="text-lg sm:text-xl font-semibold">Wyzwania</span>
-                        <span className="text-xs sm:text-sm text-text-muted">
-                            Ruch, akcja i zadania do wykonania przed grupą.
-                        </span>
+                        <div className="flex flex-col gap-1">
+                            <span className="text-lg sm:text-xl font-semibold">Wyzwania</span>
+                            <span className="text-xs sm:text-sm text-text-muted">
+                                Ruch, akcja i zadania do wykonania przed grupą.
+                            </span>
+                        </div>
                     </GlareHover>
                 </div>
                 {/* Wszystkie */}
@@ -104,10 +108,12 @@ export function Categories2() {
                         onClick={() => handleSelect("random")}
                         className={cardClasses}
                     >
-                        <span className="text-lg sm:text-xl font-semibold">Wszystkie</span>
-                        <span className="text-xs sm:text-sm text-text-muted">
-                            Miks pytań i wyzwań – aplikacja wybiera za Was.
-                        </span>
+                        <div className="flex flex-col gap-1">
+                            <span className="text-lg sm:text-xl font-semibold">Wszystkie</span>
+                            <span className="text-xs sm:text-sm text-text-muted">
+                                Miks pytań i wyzwań – aplikacja wybiera za Was.
+                            </span>
+                        </div>
                     </GlareHover>
                 </div>
                 {/* Prawda / Fałsz */}
@@ -122,10 +128,12 @@ export function Categories2() {
                         onClick={() => handleSelect("prawda_falsz")}
                         className={cardClasses}
                     >
-                        <span className="text-lg sm:text-xl font-semibold">Prawda / Fałsz</span>
-                        <span className="text-xs sm:text-sm text-text-muted">
-                            Krótkie stwierdzenia, które odsłaniają zaskakujące rzeczy.
-                        </span>
+                        <div className="flex flex-col gap-1">
+                            <span className="text-lg sm:text-xl font-semibold">Prawda / Fałsz</span>
+                            <span className="text-xs sm:text-sm text-text-muted">
+                                Krótkie stwierdzenia, które odsłaniają zaskakujące rzeczy.
+                            </span>
+                        </div>
                     </GlareHover>
                 </div>
                 {/* 18+ — szeroki */}
@@ -137,17 +145,19 @@ export function Categories2() {
                 >
                     <GlareHover
                         {...sharedProps}
-                        
+
                         className={`${cardClasses} sm:col-span-2`}
                     >
-                        <span className="text-lg sm:text-xl font-semibold">18+</span>
-                        <span className="text-xs sm:text-sm text-text-muted">
-                            Śmielsze pytania i wyzwania – do grania w zaufanym gronie.
-                        </span>
+                        <div className="flex flex-col gap-1">
+                            <span className="text-lg sm:text-xl font-semibold">18+</span>
+                            <span className="text-xs sm:text-sm text-text-muted">
+                                Śmielsze pytania i wyzwania – do grania w zaufanym gronie.
+                            </span>
+                        </div>
                     </GlareHover>
                 </div>
                 {/* Społeczność — szeroki */}
-               <div
+                <div
                     onClick={() => handleSelect("community")}
                     role="button"
                     tabIndex={0}
@@ -158,10 +168,12 @@ export function Categories2() {
                         onClick={() => handleSelect("community")}
                         className={`${cardClasses} sm:col-span-2`}
                     >
-                        <span className="text-lg sm:text-xl font-semibold">Społeczność</span>
-                        <span className="text-xs sm:text-sm text-text-muted">
-                            Wybierz zestaw społecznościowy albo stwórz własny zestaw.
-                        </span>
+                        <div className="flex flex-col gap-1">
+                            <span className="text-lg sm:text-xl font-semibold">Społeczność</span>
+                            <span className="text-xs sm:text-sm text-text-muted">
+                                Wybierz zestaw społecznościowy albo stwórz własny zestaw.
+                            </span>
+                        </div>
                     </GlareHover>
                 </div>
             </section>
