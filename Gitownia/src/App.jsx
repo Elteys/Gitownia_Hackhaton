@@ -29,13 +29,8 @@ function App() {
         <Particles amplitude={1} distance={0} enableMouseInteraction={true} />
       </div>
 
-      {/* NAGŁÓWEK (opcjonalnie) */}
-      <header className="p-4 sm:p-6 border-b border-border">
-        <div className="app-container">LOGO</div>
-      </header>
-
       {/* GŁÓWNA TREŚĆ */}
-      <main className="flex-grow flex items-center justify-center p-4 sm:p-6 relative z-10">
+      <main className="flex-grow flex items-center justify-center p-12 sm:p-10 relative z-10">
         <div className="app-container w-full max-w-4xl">
           <Routes>
             <Route path="/" element={<Navigate to="/home" replace />} />
