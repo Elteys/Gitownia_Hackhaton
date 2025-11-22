@@ -4,6 +4,15 @@ import { useNavigate } from 'react-router-dom';
 export function HomeContent() {
   const navigate = useNavigate();
 
+  const handleNavigate = (path) => {
+    if (path === "/categories1") {
+      localStorage.removeItem("gameCategoryLevel2"); // reset drugiej kategorii
+    } else if (path === "/categories2") {
+      localStorage.removeItem("gameCategoryLevel1"); // reset pierwszej kategorii
+    }
+    navigate(path);
+  };
+
   return (
     <div className="flex flex-col gap-14 w-full">
       {/* HERO */}
@@ -22,11 +31,11 @@ export function HomeContent() {
       {/* SEKCJA FUNKCJI */}
       <section className="grid sm:grid-cols-2 gap-6 w-full px-6">
         <div
-          onClick={() => navigate('/categories1')}
+          onClick={() => handleNavigate('/categories1')}
           className="card flex flex-col gap-3 p-8 border rounded-lg shadow-lg hover:border-border transition-colors w-full cursor-pointer"
           role="button"
           tabIndex={0}
-          onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && navigate('/categories1')}
+          onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && handleNavigate('/categories1')}
         >
           <h3 className="text-accent text-xl sm:text-2xl">Poznajcie się.</h3>
           <p className="text-text-muted text-lg">
@@ -35,11 +44,11 @@ export function HomeContent() {
         </div>
 
         <div
-          onClick={() => navigate('/categories2')}
+          onClick={() => handleNavigate('/categories2')}
           className="card flex flex-col gap-3 p-8 border rounded-lg shadow-lg hover:border-border transition-colors w-full cursor-pointer"
           role="button"
           tabIndex={0}
-          onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && navigate('/categories2')}
+          onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && handleNavigate('/categories2')}
         >
           <h3 className="text-accent text-xl sm:text-2xl">Poznajcie się LEPIEJ.</h3>
           <p className="text-text-muted text-lg">
