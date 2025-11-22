@@ -24,7 +24,7 @@ function Community() {
           <br />
           <span className="text-accent">format gry.</span>
         </h1>
-        <p className="text-text-muted max-w-xl text-sm sm:text-base">
+        <p className="text-text-muted max-w-xl text-sm sm:text-base bg-opacity-20 backdrop-blur-xs text-white rounded-2xl px-3 py-2">
           Zainspiruj się społecznością lub stwórz własny zestaw od zera.
         </p>
       </section>

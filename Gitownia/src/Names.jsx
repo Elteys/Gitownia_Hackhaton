@@ -72,7 +72,7 @@ export default function Names() {
             z kim dziś przełamujesz bariery?
           </span>
         </h1>
-        <p className="text-text-muted max-w-xl text-sm sm:text-base animate-delay-150">
+        <p className="text-text-muted max-w-xl text-sm sm:text-base bg-opacity-20 backdrop-blur-xs text-white rounded-2xl px-3 py-2">
           Dodaj wszystkich uczestników gry – dzięki temu każdy dostanie swoją
           kolej na odpowiedź.
         </p>

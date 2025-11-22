@@ -82,7 +82,7 @@ function CommunityCreate() {
           <br />
           <span className="text-accent">zestaw społeczności</span>
         </h1>
-        <p className="text-text-muted max-w-xl text-sm sm:text-base">
+        <p className="text-text-muted max-w-xl text-sm sm:text-base bg-opacity-20 backdrop-blur-xs text-white rounded-2xl px-3 py-2">
           Dodaj własne pytania lub wyzwania i zapisz je, aby inni mogli z nich korzystać w grze.
         </p>
       </section>

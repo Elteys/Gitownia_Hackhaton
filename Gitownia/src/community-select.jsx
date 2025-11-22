@@ -38,8 +38,8 @@ function CommunityCategories() {
           <br />
           <span className="text-accent">społecznościowy.</span>
         </h1>
-        <p className="text-text-muted max-w-xl text-sm sm:text-base">
-          Wybierz gotowy zestaw stworzony przez społeczność Gatowni.
+        <p className="text-text-muted max-w-xl text-sm sm:text-base bg-opacity-20 backdrop-blur-sm text-white rounded px-2 py-1">
+          Wybierz gotowy zestaw stworzony przez społeczność BreakIT.
         </p>
       </section>
 
@@ -51,7 +51,7 @@ function CommunityCategories() {
               onClick={() => handleSelect(category)}
               className="card w-full flex flex-col items-start gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors"
             >
-      
+
               <span className="text-lg sm:text-xl font-semibold">{category}</span>
               <span className="text-xs sm:text-sm text-text-muted">
                 Zestaw przygotowany przez społeczność Gitownii.

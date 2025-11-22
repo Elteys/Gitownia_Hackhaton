@@ -46,7 +46,7 @@ export function Categories1() {
           <span className="text-accent">kategorię gry.</span>
         </h1>
 
-        <p className="text-text-muted max-w-xl text-sm sm:text-base">
+        <p className="text-text-muted max-w-xl text-sm sm:text-base bg-opacity-20 backdrop-blur-xs text-white rounded-2xl px-3 py-2">
           Dopasuj klimat do grupy: lekki start, więcej emocji
           albo totalny chaos przy losowaniu pytań.
         </p>
