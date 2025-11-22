@@ -122,6 +122,7 @@
 }
 
 @layer utilities {
+
   /* Istniejąca animacja fade-slide */
   .fade-slide {
     @apply transition-opacity duration-500;
@@ -133,6 +134,7 @@
       opacity: 0;
       transform: translateY(6px);
     }
+
     100% {
       opacity: 1;
       transform: translateY(0);
@@ -159,9 +161,50 @@
       opacity: 0;
       transform: translateY(20px);
     }
+
     100% {
       opacity: 1;
       transform: translateY(0);
     }
   }
+}
+
+@keyframes sloganSwitch {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+.animate-slogan {
+  animation: sloganSwitch 3s ease-in-out forwards;
+}
+
+@keyframes slide-in-from-right {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.animate-slide-in {
+  animation: slide-in-from-right 0.3s ease-out forwards;
 }
