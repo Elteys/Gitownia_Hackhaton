@@ -1,11 +1,9 @@
 import React from 'react';
 import { Routes, Route, Navigate } from "react-router-dom";
 import { HomeContent } from './Home';
-import logo from "./assets/icecube.png";
 import Particles from './Particles';
 
-import Questions from './Questions'; // Twój komponent losujący pytania
-// Zmień import na zmienioną nazwę
+import Questions from './Questions';
 import Names from './Names';
 import { Categories1 } from './Categories1';
 import { Categories2 } from './Categories2';
@@ -25,45 +23,22 @@ function App() {
           pointerEvents: 'none',
         }}
       >
-        <Particles
-          amplitude={1}
-          distance={0}
-          enableMouseInteraction={true}
-        />
+        <Particles amplitude={1} distance={0} enableMouseInteraction={true} />
       </div>
 
-      {/* Główna treść */}
-      <main className="flex-grow flex items-center justify-center p-2 sm:p-4 relative z-10">
-        <div className="app-container w-full max-w-4xl">
-          <Routes>
-            <Route path="/" element={<Navigate to="/home" replace />} />
-            <Route path="/home" element={<HomeContent />} />
-    // APP-SHELL - Cała wysokość ekranu, układ Flex Col
-    <div className="app-shell min-h-screen flex flex-col">
-
-      {/* NAGŁÓWEK (jeśli jest potrzebny, można go dodać tutaj) */}
+      {/* NAGŁÓWEK (opcjonalnie) */}
       <header className="p-4 sm:p-6 border-b border-border">
         <div className="app-container">LOGO</div>
       </header>
 
-      {/* GŁÓWNA TREŚĆ (ROUTE) */}
-      <main className="flex-grow flex items-center justify-center p-4 sm:p-6">
-
-        {/* Kontener dla routingu */}
+      {/* GŁÓWNA TREŚĆ */}
+      <main className="flex-grow flex items-center justify-center p-4 sm:p-6 relative z-10">
         <div className="app-container w-full max-w-4xl">
           <Routes>
-            {/* Przekierowanie z "/" na "/home" */}
             <Route path="/" element={<Navigate to="/home" replace />} />
-
-            {/* Strona główna */}
-            <Route path="/home" element={<HomeContent />} /> 
-            <Route path="/names" element={<Names />} /> 
-
-
-            {/* Strona z losowaniem pytań */}
-            <Route path="/questions" element={<Questions />} />
-            {/* Ładujemy samą treść strony, bez ramki */}
             <Route path="/home" element={<HomeContent />} />
+            <Route path="/names" element={<Names />} />
+            <Route path="/questions" element={<Questions />} />
             <Route path="/categories1" element={<Categories1 />} />
             <Route path="/categories2" element={<Categories2 />} />
           </Routes>
