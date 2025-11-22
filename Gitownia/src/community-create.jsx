@@ -1,41 +1,39 @@
-// src/community-create.jsx
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function CommunityCreate() {
   const [cards, setCards] = useState([]); // tablica obiektów { id, text }
-  const [newCardText, setNewCardText] = useState('');
-  const [deckCategory, setDeckCategory] = useState(''); // kategoria (np. "deep")
+  const [newCardText, setNewCardText] = useState("");
+  const [deckCategory, setDeckCategory] = useState("");
   const maxCards = 50;
 
   const handleAddCard = () => {
-    if (newCardText.trim() !== '' && cards.length < maxCards) {
+    if (newCardText.trim() !== "" && cards.length < maxCards) {
       setCards([...cards, { id: cards.length + 1, text: newCardText }]);
-      setNewCardText('');
+      setNewCardText("");
     }
   };
 
   const handleDeleteCard = (index) => {
     const updatedCards = [...cards];
     updatedCards.splice(index, 1);
-    // Ustawiamy nowe id kolejno
     const renumbered = updatedCards.map((card, i) => ({ ...card, id: i + 1 }));
     setCards(renumbered);
   };
 
   const handleSave = async () => {
-    if (deckCategory.trim() === '') {
-      alert('Podaj kategorię zestawu (np. icebreaker, deep).');
+    if (deckCategory.trim() === "") {
+      alert("Podaj kategorię zestawu (np. icebreaker, deep).");
       return;
     }
     if (cards.length === 0) {
-      alert('Dodaj przynajmniej jedną kartę do zestawu.');
+      alert("Dodaj przynajmniej jedną kartę do zestawu.");
       return;
     }
 
     try {
-      const response = await fetch('http://localhost:3000/api/community-deck', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("http://localhost:3000/api/community-deck", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           category: deckCategory.toLowerCase(),
           cards,
@@ -43,94 +41,120 @@ function CommunityCreate() {
       });
 
       if (response.ok) {
-        alert('Zestaw zapisany na serwerze!');
+        alert("Zestaw zapisany na serwerze!");
         setCards([]);
-        setDeckCategory('');
-        setNewCardText('');
+        setDeckCategory("");
+        setNewCardText("");
       } else {
         const error = await response.json();
-        alert('Błąd zapisu: ' + error.error);
+        alert("Błąd zapisu: " + error.error);
       }
     } catch (err) {
-      alert('Nie udało się połączyć z serwerem: ' + err.message);
+      alert("Nie udało się połączyć z serwerem: " + err.message);
     }
   };
 
   return (
-    <div className="flex flex-col gap-6 w-full max-w-3xl mx-auto p-6">
-      <h2 className="text-2xl sm:text-4xl font-bold">Stwórz własny zestaw</h2>
-      <p className="text-text-muted">
-        Dodaj pytania lub wyzwania, a następnie zapisz zestaw do wykorzystania w grze.
-      </p>
+    <div className="flex flex-col gap-10 w-full">
+      {/* HERO */}
+      <section className="text-center flex flex-col items-center gap-3 sm:gap-4">
+        <h1 className="text-3xl sm:text-5xl leading-tight">
+          Stwórz własny
+          <br />
+          <span className="text-accent">zestaw społeczności</span>
+        </h1>
+        <p className="text-text-muted max-w-xl text-sm sm:text-base">
+          Dodaj własne pytania lub wyzwania i zapisz je,
+          aby inni mogli z nich korzystać w grze.
+        </p>
+      </section>
 
-      {/* Kategoria (nazwa zapisz się jako klucz + tytuł) */}
-      <div className="flex flex-col gap-2">
-        <label className="text-sm font-medium">
-          Kategoria (np. deep, icebreaker)
-        </label>
-        <input
-          type="text"
-          value={deckCategory}
-          onChange={(e) => setDeckCategory(e.target.value)}
-          placeholder="Wpisz kategorię zestawu"
-          className="border border-gray-300 rounded px-4 py-2"
-        />
-      </div>
+      {/* KARTA GŁÓWNA */}
+      <section className="card w-full max-w-3xl mx-auto flex flex-col gap-8">
+        {/* KATEGORIA */}
+        <div className="flex flex-col gap-2">
+          <label className="text-sm text-text-muted">
+            Kategoria zestawu
+          </label>
+          <input
+            type="text"
+            value={deckCategory}
+            onChange={(e) => setDeckCategory(e.target.value)}
+            placeholder="np. deep, icebreaker"
+            className="input"
+          />
+        </div>
 
-      {/* Dodawanie karty */}
-      <div className="flex flex-col gap-4">
-        <input
-          type="text"
-          value={newCardText}
-          onChange={(e) => setNewCardText(e.target.value)}
-          placeholder="Wpisz treść karty..."
-          className="border border-gray-300 rounded px-4 py-2"
-        />
-        <button
-          onClick={handleAddCard}
-          disabled={cards.length >= maxCards}
-          className={`px-6 py-2 rounded transition-colors ${
-            cards.length >= maxCards
-              ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
-              : 'bg-accent text-white hover:bg-accent-soft'
-          }`}
-        >
-          Dodaj kartę
-        </button>
-      </div>
+        {/* DODAWANIE KART */}
+        <div className="flex flex-col gap-3">
+          <label className="text-sm text-text-muted">
+            Treść nowej karty
+          </label>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <input
+              type="text"
+              value={newCardText}
+              onChange={(e) => setNewCardText(e.target.value)}
+              placeholder="Wpisz treść karty..."
+              className="input flex-1"
+            />
+            <button
+              onClick={handleAddCard}
+              disabled={cards.length >= maxCards}
+              className="primary-btn disabled:opacity-60 disabled:cursor-not-allowed"
+            >
+              Dodaj
+            </button>
+          </div>
 
-      {/* Licznik kart */}
-      <div className="text-sm text-text-muted">
-        Liczba kart: {cards.length}/{maxCards}
-      </div>
+          <p className="text-xs text-text-muted">
+            Liczba kart: {cards.length}/{maxCards}
+          </p>
+        </div>
 
-      {/* Lista kart */}
-      <div>
-        <h3 className="text-lg font-semibold">Twoje karty:</h3>
-        <ul className="list-none pl-0">
-          {cards.map((card, index) => (
-            <li key={card.id} className="flex justify-between items-center p-2 border-b border-gray-200">
-              <span>
-                {card.id}. {card.text}
-              </span>
-              <button
-                onClick={() => handleDeleteCard(index)}
-                className="text-red-500 hover:text-red-700"
+        {/* LISTA KART */}
+        <div className="flex flex-col gap-3">
+          <h3 className="text-base font-semibold">Twoje karty</h3>
+
+          {cards.length === 0 && (
+            <p className="text-sm text-text-muted">
+              Nie dodano jeszcze żadnych kart.
+            </p>
+          )}
+
+          <ul className="space-y-2">
+            {cards.map((card, index) => (
+              <li
+                key={card.id}
+                className="flex justify-between items-center bg-surface border border-border rounded-xl px-4 py-3"
               >
-                X
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
+                <span className="text-sm">
+                  <span className="text-text-muted mr-2">
+                    {card.id}.
+                  </span>
+                  {card.text}
+                </span>
+                <button
+                  onClick={() => handleDeleteCard(index)}
+                  className="text-red-500 text-sm hover:opacity-80"
+                >
+                  Usuń
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-      {/* Przycisk zapisu */}
-      <button
-        onClick={handleSave}
-        className="mt-6 bg-primary text-white px-6 py-3 rounded hover:bg-primary-soft transition-colors"
-      >
-        Zapisz zestaw
-      </button>
+        {/* ZAPIS */}
+        <div className="flex justify-end pt-2">
+          <button
+            onClick={handleSave}
+            className="primary-btn px-8"
+          >
+            Zapisz zestaw
+          </button>
+        </div>
+      </section>
     </div>
   );
 }
