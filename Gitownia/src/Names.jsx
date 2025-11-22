@@ -23,7 +23,7 @@ export default function Names() {
   const addPerson = () => setNames([...names, ""]);
 
   const handleNext = () => {
-    const cleaned = names.map(n => n.trim()).filter(n => n.length > 0);
+    const cleaned = names.map((n) => n.trim()).filter((n) => n.length > 0);
     if (cleaned.length === 0) return;
 
     localStorage.setItem("names", JSON.stringify(cleaned));
@@ -31,60 +31,91 @@ export default function Names() {
     window.location.hash = "#/questions";
   };
 
+  const hasAnyName = names.some((n) => n.trim().length > 0);
+
   return (
-    <main className="min-h-screen flex flex-col items-center justify-start p-6">
-      <div className="text-center mb-6">
-        <h1 className="text-white mb-5 text-5xl font-bold">Wpisz imiona</h1>
-      </div>
+    <div className="flex flex-col gap-10 w-full">
+      {/* HERO */}
+      <section className="text-center flex flex-col items-center gap-3 sm:gap-4">
+        <h1 className="text-3xl sm:text-5xl leading-tight">
+          Wpisz imiona
+          <br />
+          <span className="text-accent">
+            z kim dziś przełamujesz lody?
+          </span>
+        </h1>
 
-      {/* SWITCH: losowanie graczy */}
-      <div className="w-full max-w-xl sm:max-w-2xl mb-4 flex items-center justify-between gap-4">
-        <p className="text-sm sm:text-base text-text-muted">
-          Chcesz losować graczy do odpowiedzi?
+        <p className="text-text-muted max-w-xl text-sm sm:text-base">
+          Dodaj wszystkich uczestników gry – dzięki temu każdy dostanie swoją
+          kolej na odpowiedź.
         </p>
-        <button
-          type="button"
-          onClick={() => setRandomizePlayers(prev => !prev)}
-          className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${randomizePlayers ? "bg-accent" : "bg-slate-600"
-            }`}
-        >
-          <span
-            className={`inline-block h-5 w-5 transform rounded-full bg-slate-950 transition-transform ${randomizePlayers ? "translate-x-5" : "translate-x-1"
-              }`}
-          />
-        </button>
-      </div>
+      </section>
 
-      <div className="w-full max-w-xl sm:max-w-2xl space-y-4 -mt-4">
-        {names.map((name, index) => (
-          <div
-            key={index}
-            className="flex items-center bg-[#111429] rounded-xl p-5 shadow-xl"
-          >
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => handleNameChange(index, e.target.value)}
-              placeholder={`Osoba ${index + 1}`}
-              className="flex-1 bg-transparent outline-none text-white placeholder-gray-400 max-w-full text-lg"
-            />
+      {/* KARTA Z USTAWIENIAMI + IMIONAMI */}
+      <section className="card w-full max-w-3xl mx-auto flex flex-col gap-6">
+        {/* SWITCH: losowanie graczy */}
+        <div className="flex items-center justify-between gap-4">
+          <div className="text-left">
+            <p className="text-sm sm:text-base text-text">
+              Losuj gracza do odpowiedzi
+            </p>
+            <p className="text-xs text-text-muted">
+              Jeśli wyłączysz, gracze mogą wybierać się sami.
+            </p>
           </div>
-        ))}
 
-        <button
-          onClick={addPerson}
-          className="w-full bg-blue-600 hover:bg-blue-700 transition text-white font-semibold py-3 rounded-xl shadow-lg"
-        >
-          + Dodaj kolejną osobę
-        </button>
-      </div>
+          <button
+            type="button"
+            onClick={() => setRandomizePlayers((prev) => !prev)}
+            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${randomizePlayers ? "bg-accent" : "bg-slate-600"
+              }`}
+          >
+            <span
+              className={`inline-block h-5 w-5 transform rounded-full bg-slate-950 transition-transform ${randomizePlayers ? "translate-x-5" : "translate-x-1"
+                }`}
+            />
+          </button>
+        </div>
 
-      <button
-        onClick={handleNext}
-        className="mt-10 bg-white text-black font-semibold py-3 px-16 rounded-xl shadow-lg hover:bg-gray-200 transition"
-      >
-        Dalej
-      </button>
-    </main>
+        {/* LISTA IMION */}
+        <div className="space-y-3">
+          {names.map((name, index) => (
+            <div
+              key={index}
+              className="flex items-center gap-3 bg-surface rounded-xl border border-border px-4 py-3"
+            >
+              <span className="text-xs text-text-muted w-16 shrink-0">
+                Osoba {index + 1}
+              </span>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => handleNameChange(index, e.target.value)}
+                placeholder="Wpisz imię"
+                className="input bg-transparent border-none px-0 py-1 focus:ring-0"
+              />
+            </div>
+          ))}
+
+          <button
+            onClick={addPerson}
+            className="w-full inline-flex items-center justify-center rounded-xl border border-border bg-surface px-4 py-2 text-sm font-medium text-text hover:bg-surface-muted transition-colors"
+          >
+            + Dodaj kolejną osobę
+          </button>
+        </div>
+
+        {/* PRZYCISK DALEJ */}
+        <div className="flex justify-end pt-2">
+          <button
+            onClick={handleNext}
+            disabled={!hasAnyName}
+            className="primary-btn px-8 py-2 text-sm sm:text-base disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+            Dalej
+          </button>
+        </div>
+      </section>
+    </div>
   );
 }
