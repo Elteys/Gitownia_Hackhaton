@@ -1,8 +1,9 @@
 import { useRef } from 'react';
 
 const GlareHover = ({
-  width = '350px',
-  height = '350px',
+  maxWidth = '350px',
+  maxHeight = '350px',
+  height = '100%',
   background = '#000',
   borderRadius = '30px',
   borderColor = '#333',
@@ -72,7 +73,8 @@ const GlareHover = ({
     <div
       className={`relative grid place-items-center overflow-hidden border cursor-pointer ${className}`}
       style={{
-        width,
+        maxWidth,
+        maxHeight,
         height,
         background,
         borderRadius,
