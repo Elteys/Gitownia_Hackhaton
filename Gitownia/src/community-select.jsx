@@ -1,44 +1,69 @@
-// src/community-select.jsx
+// src/communityCategories.jsx
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function CommunitySelect() {
-  const [decks, setDecks] = useState([]);
+function CommunityCategories() {
+  const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('/CommunityQuestions.json')
+    // Ładuj plik z zestawami społecznościowymi
+    fetch('./Json/CommunityQuestions.json')
       .then(res => res.json())
-      .then(data => setDecks(data))
+      .then(data => {
+        // Zrób listę kluczy (kategorii)
+        const categoryKeys = Object.keys(data);
+        setCategories(categoryKeys);
+      })
       .catch(err => {
-        console.error('Błąd ładowania pliku JSON:', err);
-        setDecks([]);
+        console.error('Błąd ładowania pliku z zestawami społecznościowymi', err);
+        setCategories([]);
       });
   }, []);
 
-  return (
-    <div className="flex flex-col gap-14 w-full max-w-3xl mx-auto p-6">
-      <h2 className="text-2xl sm:text-4xl font-bold">Wybierz zestaw społecznościowy</h2>
-      <p className="text-green-600 font-medium">Routing działa poprawnie!</p>
-      <p className="text-text-muted">
-        Wybierz gotowy zestaw stworzony przez społeczność Gatowni.
-      </p>
+  const handleSelect = (category) => {
+    // Zapisz wybraną kategorię do localStorage
+    localStorage.setItem('gameCategoryLevel1', category);
+    localStorage.setItem('questionSource', 'community'); // <-- DODAJ
+    navigate('/names');
+  };
 
-      <div className="flex flex-col gap-4">
-        {decks.length > 0 ? (
-          decks.map((deck) => (
-            <div
-              key={deck.id}
-              className="card p-4 border border-gray-300 rounded hover:border-accent-soft transition-colors cursor-pointer"
+  return (
+    <div className="flex flex-col gap-14 w-full">
+      <section className="text-center flex flex-col items-center gap-4 sm:gap-6">
+        <h1 className="text-3xl sm:text-7xl leading-tight">
+          Wybierz zestaw
+          <br />
+          <span className="text-accent">społecznościowy.</span>
+        </h1>
+        <p className="text-text-muted max-w-xl text-sm sm:text-base">
+          Wybierz gotowy zestaw stworzony przez społeczność Gatowni.
+        </p>
+      </section>
+
+      <section className="grid gap-4 sm:gap-6 w-full max-w-3xl mx-auto grid-cols-1 sm:grid-cols-2">
+        {categories.length > 0 ? (
+          categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => handleSelect(category)}
+              className="card w-full flex flex-col items-start gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors"
             >
-              <h3 className="text-lg font-semibold">{deck.title}</h3>
-              <p className="text-sm text-text-muted">Karty: {deck.cards.length}</p>
-            </div>
+              <span className="text-xs uppercase tracking-wide text-text-muted">
+                Zestaw społecznościowy
+              </span>
+              <span className="text-lg sm:text-xl font-semibold">{category}</span>
+              <span className="text-xs sm:text-sm text-text-muted">
+                Zestaw przygotowany przez społeczność Gatowni.
+              </span>
+            </button>
           ))
         ) : (
-          <p>Wczytywanie listy zestawów...</p>
+          <p>Ładowanie zestawów społecznościowych...</p>
         )}
-      </div>
+      </section>
     </div>
   );
 }
 
-export default CommunitySelect;
+export default CommunityCategories;

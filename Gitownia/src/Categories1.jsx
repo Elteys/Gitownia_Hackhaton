@@ -9,6 +9,7 @@ export function Categories1() {
       navigate("/community");
     } else {
       localStorage.setItem("gameCategoryLevel1", value);
+      localStorage.setItem("questionSource", "default"); // <-- DODAJ
       navigate("/names");
     }
   };

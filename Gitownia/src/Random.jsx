@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import questionsData from "../Json/questions.json";
+import communityData from "../Json/CommunityQuestions.json"; // <-- DODAJ
 
 export default function Pytania() {
   const savedNames = JSON.parse(localStorage.getItem("names") || "[]");
@@ -9,6 +10,7 @@ export default function Pytania() {
     localStorage.getItem("randomizePlayers") === "true";
 
   const categories = [savedCat1, savedCat2].filter(Boolean);
+  const questionSource = localStorage.getItem("questionSource") || "default";
   const users = savedNames.length > 0 ? savedNames : ["Ania", "Bartek"];
 
   const [currentQuestion, setCurrentQuestion] = useState(null);
@@ -27,7 +29,9 @@ export default function Pytania() {
   }, [remainingUsers, users]);
 
   const getRandomQuestion = () => {
-    const allQuestions = categories.flatMap((cat) => questionsData[cat] || []);
+    const sourceData = questionSource === "community" ? communityData : questionsData;
+    const allQuestions = categories.flatMap((cat) => sourceData[cat] || []);
+
     if (allQuestions.length === 0) {
       setCurrentQuestion({
         id: 0,
