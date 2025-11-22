@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Names() {
   const [names, setNames] = useState([""]);
+
+  useEffect(() => {
+    const savedNames = JSON.parse(localStorage.getItem("names") || "[]");
+    if (savedNames.length > 0) setNames(savedNames);
+  }, []);
 
   const handleNameChange = (index, value) => {
     const updated = [...names];
@@ -9,14 +14,11 @@ export default function Names() {
     setNames(updated);
   };
 
-  const addPerson = () => {
-    setNames([...names, ""]);
-  };
+  const addPerson = () => setNames([...names, ""]);
 
-  // funkcja do zapisu i przekierowania
   const handleNext = () => {
-    localStorage.setItem("names", JSON.stringify(names)); // zapis do localStorage
-    window.location.hash = "#/questions"; // przekierowanie
+    localStorage.setItem("names", JSON.stringify(names));
+    window.location.hash = "#/questions";
   };
 
   return (

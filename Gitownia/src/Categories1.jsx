@@ -41,7 +41,7 @@ export function Categories1() {
         </button>
 
         <button
-          onClick={() => handleSelect("challenges")}
+          onClick={() => handleSelect("wyzwania1")}
           className="card w-full flex flex-col items-start gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors"
         >
           <span className="text-xs uppercase tracking-wide text-text-muted">
@@ -67,7 +67,7 @@ export function Categories1() {
         </button>
 
         <button
-          onClick={() => handleSelect("truth-false")}
+          onClick={() => handleSelect("prawda_falsz")}
           className="card w-full flex flex-col items-start gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors"
         >
           <span className="text-xs uppercase tracking-wide text-text-muted">
@@ -80,7 +80,7 @@ export function Categories1() {
         </button>
 
         <button
-          onClick={() => handleSelect("18-plus")}
+          onClick={() => handleSelect("18plus")}
           className="card w-full flex flex-col items-start gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors sm:col-span-2"
         >
           <span className="text-xs uppercase tracking-wide text-text-muted">
