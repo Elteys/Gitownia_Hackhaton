@@ -1,12 +1,27 @@
 import React, { useState, useEffect } from "react";
 import questionsData from "../Json/questions.json";
 
-export default function Pytania({ categories = ["icebreaker", "wyzwania1"], users = ["Ania", "Bartek", "Kasia"] }) {
+export default function Pytania() {
+  // ODBIERANIE DANYCH Z LOCALSTORAGE
+  const savedNames = JSON.parse(localStorage.getItem("names") || "[]");
+  const savedCat1 = localStorage.getItem("gameCategoryLevel1");
+  const savedCat2 = localStorage.getItem("gameCategoryLevel2");
+
+  // ŁĄCZENIE kategorii w jedną tablicę
+  const finalCategories = [savedCat1, savedCat2].filter(Boolean);
+
+  // Jeśli nic nie wybrano – fallback
+  const categories = finalCategories.length > 0 ? finalCategories : ["icebreaker"];
+
+  // użytkownicy
+  const users = savedNames.length > 0 ? savedNames : ["Ania", "Bartek"];
+
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [round, setRound] = useState(1);
   const [remainingUsers, setRemainingUsers] = useState([...users]);
   const [currentUser, setCurrentUser] = useState(null);
 
+  // restartuje kolejkę użytkowników po zakończeniu rundy
   useEffect(() => {
     if (remainingUsers.length === 0 && users.length > 0) {
       setRemainingUsers([...users]);
@@ -16,10 +31,12 @@ export default function Pytania({ categories = ["icebreaker", "wyzwania1"], user
 
   const getRandomQuestion = () => {
     const allQuestions = categories.flatMap(cat => questionsData[cat] || []);
+
     if (allQuestions.length === 0) {
       setCurrentQuestion({ id: 0, text: "Brak pytań w wybranych kategoriach." });
       return;
     }
+
     if (remainingUsers.length === 0) return;
 
     const userIndex = Math.floor(Math.random() * remainingUsers.length);
@@ -33,8 +50,6 @@ export default function Pytania({ categories = ["icebreaker", "wyzwania1"], user
 
   return (
     <div className="flex flex-col items-center w-full min-h-screen p-4 sm:p-6">
-
-      {/* Kontener contentu o stałej szerokości */}
       <div className="flex flex-col gap-10 w-[360px] sm:w-[400px] md:w-[450px]">
 
         {/* Nagłówek */}
@@ -52,9 +67,13 @@ export default function Pytania({ categories = ["icebreaker", "wyzwania1"], user
         <section className="card flex flex-col gap-4 text-center">
           <div className="min-h-[160px] flex items-center justify-center p-3 sm:p-4">
             {currentQuestion ? (
-              <p className="text-base sm:text-lg md:text-xl text-text">{currentQuestion.text}</p>
+              <p className="text-base sm:text-lg md:text-xl text-text">
+                {currentQuestion.text}
+              </p>
             ) : (
-              <p className="text-sm sm:text-base text-text-muted">Kliknij przycisk, aby wylosować pytanie</p>
+              <p className="text-sm sm:text-base text-text-muted">
+                Kliknij przycisk, aby wylosować pytanie
+              </p>
             )}
           </div>
 
@@ -65,14 +84,7 @@ export default function Pytania({ categories = ["icebreaker", "wyzwania1"], user
           >
             Losuj pytanie
           </button>
-
-          {users.length === 0 && (
-            <p className="text-red-500 mt-2 text-sm sm:text-base text-center">
-              Brak użytkowników! Dodaj graczy na odpowiedniej podstronie.
-            </p>
-          )}
         </section>
-
       </div>
     </div>
   );
