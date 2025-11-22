@@ -1,19 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import BackButton from "./BackButton";
 
 export default function Names() {
-  const [names, setNames] = useState([""]);
+  const [names, setNames] = useState([""]); // zawsze pusty start
   const [randomizePlayers, setRandomizePlayers] = useState(true);
-
-  useEffect(() => {
-    const savedNames = JSON.parse(localStorage.getItem("names") || "[]");
-    if (savedNames.length > 0) setNames(savedNames);
-
-    const savedFlag = localStorage.getItem("randomizePlayers");
-    if (savedFlag !== null) {
-      setRandomizePlayers(savedFlag === "true");
-    }
-  }, []);
 
   const handleNameChange = (index, value) => {
     const updated = [...names];
@@ -24,18 +14,31 @@ export default function Names() {
   const addPerson = () => setNames([...names, ""]);
 
   const handleNext = () => {
-    const cleaned = names.map((n) => n.trim()).filter((n) => n.length > 0);
-    if (cleaned.length === 0) return;
+  const cleaned = names.map((n) => n.trim()).filter((n) => n.length > 0);
+  if (cleaned.length === 0) return;
 
-    localStorage.setItem("names", JSON.stringify(cleaned));
-    localStorage.setItem("randomizePlayers", String(randomizePlayers));
+  // zapis do localStorage
+  localStorage.setItem("names", JSON.stringify(cleaned));
+  localStorage.setItem("randomizePlayers", String(randomizePlayers));
+
+  // odczyt wybranej kategorii
+  const selectedCategory = localStorage.getItem("selectedCategory") || "categories1";
+
+  // przekierowanie na odpowiednią stronę
+  if (selectedCategory === "categories1") {
+    window.location.hash = "#/categories1";
+  } else if (selectedCategory === "categories2") {
+    window.location.hash = "#/categories2";
+  } else {
+    // fallback na jakąś domyślną stronę np. questions
     window.location.hash = "#/questions";
-  };
+  }
+};
+
 
   const hasAnyName = names.some((n) => n.trim().length > 0);
 
   return (
-    
     <div className="flex flex-col gap-10 w-full">
       <BackButton />
       {/* HERO */}
@@ -47,16 +50,14 @@ export default function Names() {
             z kim dziś przełamujesz lody?
           </span>
         </h1>
-
         <p className="text-text-muted max-w-xl text-sm sm:text-base">
           Dodaj wszystkich uczestników gry – dzięki temu każdy dostanie swoją
           kolej na odpowiedź.
         </p>
       </section>
 
-      {/* KARTA Z USTAWIENIAMI + IMIONAMI */}
+      {/* KARTA Z IMIONAMI */}
       <section className="card w-full max-w-3xl mx-auto flex flex-col gap-6">
-        {/* SWITCH: losowanie graczy */}
         <div className="flex items-center justify-between gap-4">
           <div className="text-left">
             <p className="text-sm sm:text-base text-text">
@@ -66,16 +67,17 @@ export default function Names() {
               Jeśli wyłączysz, gracze mogą wybierać się sami.
             </p>
           </div>
-
           <button
             type="button"
             onClick={() => setRandomizePlayers((prev) => !prev)}
-            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${randomizePlayers ? "bg-accent" : "bg-slate-600"
-              }`}
+            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+              randomizePlayers ? "bg-accent" : "bg-slate-600"
+            }`}
           >
             <span
-              className={`inline-block h-5 w-5 transform rounded-full bg-slate-950 transition-transform ${randomizePlayers ? "translate-x-5" : "translate-x-1"
-                }`}
+              className={`inline-block h-5 w-5 transform rounded-full bg-slate-950 transition-transform ${
+                randomizePlayers ? "translate-x-5" : "translate-x-1"
+              }`}
             />
           </button>
         </div>

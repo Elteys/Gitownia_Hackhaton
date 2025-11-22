@@ -1,6 +1,7 @@
 // src/communityCategories.jsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import BackButton from './BackButton';
 
 function CommunityCategories() {
   const [categories, setCategories] = useState([]);
@@ -25,11 +26,12 @@ function CommunityCategories() {
     // Zapisz wybraną kategorię do localStorage
     localStorage.setItem('gameCategoryLevel1', category);
     localStorage.setItem('questionSource', 'community'); // <-- DODAJ
-    navigate('/names');
+    navigate('/Questions');
   };
 
   return (
     <div className="flex flex-col gap-14 w-full">
+      <BackButton />
       <section className="text-center flex flex-col items-center gap-4 sm:gap-6">
         <h1 className="text-3xl sm:text-7xl leading-tight">
           Wybierz zestaw
