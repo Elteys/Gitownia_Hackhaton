@@ -13,16 +13,27 @@ export default function BackButton() {
       onClick={goBack}
       className="
         fixed top-4 left-4 z-50
-        px-3 py-2
-        text-white
-        rounded-xl
+        w-12 h-12
+        flex items-center justify-center
+        rounded-full
         bg-transparent
         backdrop-blur-sm
-        hover:bg-white/10
-        transition
+        border border-transparent
+        hover:border-accent
+        transition-all duration-300
+        transform hover:scale-110
       "
     >
-      ←
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-6 h-6 text-white"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={2}
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
     </button>
   );
 }

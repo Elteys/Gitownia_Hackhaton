@@ -11,7 +11,7 @@ export function Categories1() {
     } else {
       localStorage.setItem("gameCategoryLevel1", value);
       localStorage.setItem("questionSource", "default"); // <-- DODAJ
-      navigate("/names");
+      navigate("/Questions");
     }
   };
 
@@ -65,11 +65,11 @@ export function Categories1() {
           className="card w-full flex flex-col items-start gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors"
         >
           <span className="text-xs uppercase tracking-wide text-text-muted">
-            Dla niezdecydowanych
+            Tylko dla pełnoletnich
           </span>
-          <span className="text-lg sm:text-xl font-semibold">Losowo</span>
+          <span className="text-lg sm:text-xl font-semibold">18+</span>
           <span className="text-xs sm:text-sm text-text-muted">
-            Miks pytań i wyzwań – aplikacja wybiera za Was.
+            Śmielsze pytania i wyzwania – do grania w zaufanym gronie.
           </span>
         </button>
 
@@ -87,17 +87,18 @@ export function Categories1() {
         </button>
 
         <button
-          onClick={() => handleSelect("18plus")}
+          onClick={() => handleSelect("random")}
           className="card w-full flex flex-col items-start gap-2 px-5 py-4 sm:px-6 sm:py-5 hover:border-accent-soft transition-colors sm:col-span-2"
         >
           <span className="text-xs uppercase tracking-wide text-text-muted">
-            Tylko dla pełnoletnich
+            Dla niezdecydowanych
           </span>
-          <span className="text-lg sm:text-xl font-semibold">18+</span>
+          <span className="text-lg sm:text-xl font-semibold">Wszystkie</span>
           <span className="text-xs sm:text-sm text-text-muted">
-            Śmielsze pytania i wyzwania – do grania w zaufanym gronie.
+            Miks pytań i wyzwań – aplikacja wybiera za Was.
           </span>
         </button>
+
 
         <button
           onClick={() => handleSelect("community")}

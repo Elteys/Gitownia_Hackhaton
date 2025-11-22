@@ -122,6 +122,7 @@
 }
 
 @layer utilities {
+  /* Istniejąca animacja fade-slide */
   .fade-slide {
     @apply transition-opacity duration-500;
     animation: fadeSlide 0.5s ease-out;
@@ -132,7 +133,32 @@
       opacity: 0;
       transform: translateY(6px);
     }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
+  /* Animacja w miejscu przy hover */
+  .hover-grow {
+    @apply transition-transform duration-300 ease-out;
+  }
+
+  .hover-grow:hover {
+    transform: scale(1.05);
+  }
+
+  /* Animacja pojawiania się kart */
+  .card-appear {
+    @apply opacity-0;
+    animation: cardAppear 0.6s ease-out forwards;
+  }
+
+  @keyframes cardAppear {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
     100% {
       opacity: 1;
       transform: translateY(0);

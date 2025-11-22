@@ -11,7 +11,7 @@ export function Categories2() {
         } else {
             localStorage.setItem("gameCategoryLevel1", value);
             localStorage.setItem("questionSource", "default"); // <-- DODAJ
-            navigate("/names");
+            navigate("/Questions");
         }
     };
 
@@ -67,7 +67,7 @@ export function Categories2() {
                     <span className="text-xs uppercase tracking-wide text-text-muted">
                         Dla niezdecydowanych
                     </span>
-                    <span className="text-lg sm:text-xl font-semibold">Losowo</span>
+                    <span className="text-lg sm:text-xl font-semibold">Wszystkie</span>
                     <span className="text-xs sm:text-sm text-text-muted">
                         Miks pytań i wyzwań – aplikacja wybiera za Was.
                     </span>

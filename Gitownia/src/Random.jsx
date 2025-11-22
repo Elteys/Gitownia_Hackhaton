@@ -30,7 +30,14 @@ export default function Pytania() {
 
   const getRandomQuestion = () => {
     const sourceData = questionSource === "community" ? communityData : questionsData;
-    const allQuestions = categories.flatMap((cat) => sourceData[cat] || []);
+
+    // jeśli kategoria "random" jest w wybranych, pobieramy wszystkie pytania ze wszystkich kategorii
+    let allQuestions;
+    if (categories.includes("random")) {
+      allQuestions = Object.values(sourceData).flatMap(cat => Object.values(cat).flat());
+    } else {
+      allQuestions = categories.flatMap(cat => sourceData[cat] || []);
+    }
 
     if (allQuestions.length === 0) {
       setCurrentQuestion({
@@ -39,6 +46,7 @@ export default function Pytania() {
       });
       return;
     }
+
     if (remainingUsers.length === 0 || users.length === 0) return;
 
     const userIndex = Math.floor(Math.random() * remainingUsers.length);
@@ -48,7 +56,7 @@ export default function Pytania() {
     const question = allQuestions[questionIndex];
 
     if (!randomizePlayers) {
-      setRemainingUsers((prev) => prev.filter((_, i) => i !== userIndex));
+      setRemainingUsers(prev => prev.filter((_, i) => i !== userIndex));
       setCurrentUser(user);
       setCurrentQuestion(question);
       return;
@@ -65,12 +73,13 @@ export default function Pytania() {
         clearInterval(spinInterval);
         setIsSpinning(false);
         setDisplayUser(user);
-        setRemainingUsers((prev) => prev.filter((_, i) => i !== userIndex));
+        setRemainingUsers(prev => prev.filter((_, i) => i !== userIndex));
         setCurrentUser(user);
         setCurrentQuestion(question);
       }
     }, 80);
   };
+
 
   const prettyCategory = (key) => {
     const map = {
