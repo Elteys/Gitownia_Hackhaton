@@ -24,7 +24,6 @@ function CommunityCreate() {
     updatedCards.splice(index, 1);
     const renumbered = updatedCards.map((card, i) => ({ ...card, id: i + 1 }));
     setCards(renumbered);
-    showToast("Usunięto kartę", "error");
   };
 
   const handleSave = async () => {
@@ -122,12 +121,13 @@ function CommunityCreate() {
 
         <div className="flex flex-col gap-3">
           <h3 className="text-base font-semibold">Twoje karty</h3>
-          {cards.length === 0 && <p className="text-sm text-text-muted">Nie dodano jeszcze żadnych kart.</p>}
           <ul className="space-y-2">
+            {cards.length === 0 && <p className="text-sm text-text-muted">Nie dodano jeszcze żadnych kart.</p>}
             {cards.map((card, index) => (
               <li
                 key={card.id}
-                className="flex justify-between items-center bg-surface border border-border rounded-xl px-4 py-3"
+                className="flex justify-between items-center bg-surface border border-border rounded-xl px-4 py-3 transform transition-all duration-300 animate-slide-in"
+                style={{ animationDelay: `${index * 0.05}s` }} // <-- dokładnie jak w Names
               >
                 <span className="text-sm">
                   <span className="text-text-muted mr-2">{card.id}.</span>
@@ -135,13 +135,16 @@ function CommunityCreate() {
                 </span>
                 <button
                   onClick={() => handleDeleteCard(index)}
-                  className="text-red-500 text-sm hover:opacity-80"
+                  className="p-2 text-text-muted hover:text-red-500 transition-colors shrink-0 rounded-full focus:outline-none focus:ring-2 focus:ring-red-500"
                 >
-                  Usuń
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 10-2 0v6a1 1 0 102 0V8z" clipRule="evenodd" />
+                  </svg>
                 </button>
               </li>
             ))}
           </ul>
+
         </div>
 
         <div className="flex justify-end pt-2">
